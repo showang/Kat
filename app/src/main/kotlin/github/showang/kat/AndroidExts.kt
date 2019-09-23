@@ -21,7 +21,7 @@ fun <T> AppCompatActivity.extra(key: String, default: T) =
                     is Long -> getLongExtra(key, default)
                     else -> throw IllegalStateException("Unknown Type")
                 }
-            }.cast().assignN(::mData)
+            }.cast() assignN ::mData
 
 
         @Suppress("UNCHECKED_CAST")
@@ -43,7 +43,7 @@ fun <T> AppCompatActivity.extraN(key: String) =
                     is Long? -> getLongExtra(key, 0L)
                     else -> throw IllegalStateException("Unknown Type")
                 }
-            }.cast().assignN(::mData)
+            }.cast() assign ::mData
 
 
         @Suppress("UNCHECKED_CAST")
@@ -65,7 +65,7 @@ fun <T> Fragment.extra(key: String, default: T) =
                     is Boolean -> getBoolean(key, default)
                     is Long -> getLong(key, default)
                     else -> throw IllegalStateException("Unknown Type")
-                }.cast().assignN(::data)
+                }.cast() assignN ::data
             } ?: throw IllegalStateException("No argument found")
 
 
@@ -87,7 +87,7 @@ fun <T> Fragment.extraN(key: String) =
                     is Boolean? -> getBoolean(key)
                     is Long? -> getLong(key)
                     else -> throw IllegalStateException("Unknown Type")
-                }.cast().assign(::data)
+                }.cast() assign ::data
             } ?: throw IllegalStateException("No argument found")
 
 

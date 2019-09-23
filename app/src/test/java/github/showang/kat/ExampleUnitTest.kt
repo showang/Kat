@@ -2,8 +2,6 @@ package github.showang.kat
 
 import org.junit.Test
 
-import org.junit.Assert.*
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -11,7 +9,15 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testMeasure() {
+        val printCost = { cost: Long -> print("Cost time: $cost ms") }
+        val measureDoubleSum = { max: Int ->
+            measure {
+                (1..max).map { 2 * it }
+                    .reduce { acc, i -> acc + i }
+                    .also { print("total: $it\n") }
+            }
+        }
+        ((30000 bind measureDoubleSum) andThen printCost).invoke()
     }
 }
