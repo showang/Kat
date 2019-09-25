@@ -18,6 +18,6 @@ class ExampleUnitTest {
                     .also { print("total: $it\n") }
             }
         }
-        ((30000 bind measureDoubleSum) andThen printCost).invoke()
+        perform(30000 bind measureDoubleSum andThen printCost)
     }
 }
